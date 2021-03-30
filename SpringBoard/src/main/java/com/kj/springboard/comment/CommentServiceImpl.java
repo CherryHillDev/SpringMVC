@@ -5,38 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kj.springboard.board.BoardVO;
+
 @Service("CommentService")
 public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentDAO commentDAO;
 	
 	@Override
-	public void insertComment() {
-		
+	public void insertComment(CommentVO vo) {
+		commentDAO.insertComment(vo);
 	}
 
 	@Override
-	public void updateComment() {
-		// TODO Auto-generated method stub
-
+	public void updateComment(CommentVO vo) {
+		commentDAO.updateComment(vo);
 	}
 
 	@Override
-	public void deleteComment() {
-		// TODO Auto-generated method stub
-
+	public void deleteComment(CommentVO vo) {
+		commentDAO.deleteComment(vo);
 	}
 
 	@Override
-	public CommentVO getComment() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<CommentVO> getCommentList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CommentVO> getCommentList(CommentVO vo) {
+		return commentDAO.getCommentList(vo);
 	}
 
 }

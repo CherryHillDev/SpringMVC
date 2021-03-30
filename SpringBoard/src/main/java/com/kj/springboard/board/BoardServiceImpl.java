@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kj.springboard.Criteria;
 import com.kj.springboard.board.BoardVO;
 
 @Service("BoardService")
@@ -37,4 +38,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.getBoardList(vo);
 	}
 	
+	@Override
+	public List<BoardVO> getBoardListTest(Criteria criteria) {
+		return boardDAO.getBoardListTest(criteria);
+	}
+	
+	@Override
+	public int getTotalCount(Criteria criteria) {
+		return boardDAO.getTotalCount(criteria);
+	}
 }

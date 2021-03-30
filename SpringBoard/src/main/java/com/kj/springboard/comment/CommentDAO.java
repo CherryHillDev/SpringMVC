@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kj.springboard.board.BoardVO;
+
 @Repository
 public class CommentDAO {
 	@Autowired
@@ -27,7 +29,7 @@ public class CommentDAO {
 	}
 	
 	public List<CommentVO> getCommentList(CommentVO vo) {
-		System.out.println("===> getCommentList()");
+		System.out.println("===> getCommentList()"+vo.getId());
 		return mybatis.selectList("commentMapping.getCommentList", vo);
 	}
 }

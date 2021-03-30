@@ -19,4 +19,12 @@
 		<if test="condition=='content'"> content </if>
 		LIKE concat('%',#{keyword},'%') ORDER BY id DESC 
 	</select>
+	
+	<select id="getBoardListTest" resultType="com.kj.springboard.board.BoardVO">
+		SELECT * FROM board ORDER BY id DESC LIMIT #{startPage}, 10
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT count(id) FROM board
+	</select>
 </mapper>

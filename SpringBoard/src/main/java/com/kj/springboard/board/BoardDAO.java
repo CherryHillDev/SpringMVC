@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kj.springboard.Criteria;
+
 @Repository
 public class BoardDAO {
 	@Autowired
@@ -34,5 +36,14 @@ public class BoardDAO {
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> getBoardList()");
 		return mybatis.selectList("boardMapping.getBoardList", vo);
+	}
+	
+	public List<BoardVO> getBoardListTest(Criteria criteria){
+		System.out.println("===> getBoardListTest()");
+		return mybatis.selectList("boardMapping.getBoardListTest", criteria);
+	}
+	
+	public int getTotalCount(Criteria criteria) {
+		return mybatis.selectOne("boardMapping.getTotalCount", criteria);
 	}
 }
