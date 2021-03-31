@@ -33,14 +33,10 @@ public class BoardDAO {
 		return mybatis.selectOne("boardMapping.getBoard", vo);
 	}
 	
-	public List<BoardVO> getBoardList(BoardVO vo) {
-		System.out.println("===> getBoardList()");
-		return mybatis.selectList("boardMapping.getBoardList", vo);
-	}
 	
-	public List<BoardVO> getBoardListTest(Criteria criteria){
-		System.out.println("===> getBoardListTest()");
-		return mybatis.selectList("boardMapping.getBoardListTest", criteria);
+	public List<BoardVO> getBoardList(Criteria criteria){
+		System.out.println("===> getBoardList()");
+		return mybatis.selectList("boardMapping.getBoardList", criteria);
 	}
 	
 	public int getTotalCount(Criteria criteria) {

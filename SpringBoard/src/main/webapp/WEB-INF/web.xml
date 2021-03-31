@@ -29,6 +29,16 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
+	<!-- .jsp 확장명 -->
+	<servlet>
+		<servlet-name>getBoardList</servlet-name>
+		<servlet-class>/getBoardList.jsp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getBoardList</servlet-name>
+		<url-pattern>/getBoardList</url-pattern>
+	</servlet-mapping>
+	
 	<!-- 인코딩 -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>

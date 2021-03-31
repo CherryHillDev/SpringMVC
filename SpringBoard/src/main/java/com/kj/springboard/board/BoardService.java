@@ -9,8 +9,7 @@ public interface BoardService {
 	public void updateBoard(BoardVO vo);
 	public void deleteBoard(BoardVO vo);
 	public BoardVO getBoard(BoardVO vo);
-	public List<BoardVO> getBoardList(BoardVO vo);
-	public List<BoardVO> getBoardListTest(Criteria criteria);
+	public List<BoardVO> getBoardList(Criteria criteria);
 	public int getTotalCount(Criteria criteria);
 	
 }

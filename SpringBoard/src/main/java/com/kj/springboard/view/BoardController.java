@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +27,9 @@ public class BoardController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping("/insertBoard.do")
+	@RequestMapping(value="/insertBoard.do", method=RequestMethod.POST)
 	public String insertBoard(BoardVO vo) {
-		System.out.println("insert : "+vo.getId()+", "+vo.getTitle());
+		System.out.println("insert : "+vo.getContent()+", "+vo.getTitle());
 		boardService.insertBoard(vo);
 		
 		return "getBoardList.do";
@@ -60,13 +61,14 @@ public class BoardController {
 	}
  */
 	
-	@RequestMapping(value="/getBoardList.do", method = RequestMethod.GET)
+	@RequestMapping(value="/getBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getBoardList(@ModelAttribute("criteria") Criteria criteria, Model model, Authentication auth) throws Exception {
 		if(auth!=null) {
 			model.addAttribute("username", auth.getName());
 		}
 		
-		model.addAttribute("boardList", boardService.getBoardListTest(criteria));	//초기값은 1페이지
+		System.out.println("condition, keyword : "+criteria.getCondition()+", "+criteria.getKeyword());
+		model.addAttribute("boardList", boardService.getBoardList(criteria));	//초기값은 1페이지
 		
 		Paging paging = new Paging();
 		paging.setCriteria(criteria);
