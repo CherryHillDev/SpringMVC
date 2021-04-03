@@ -9,18 +9,19 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
-<body class="bg-secondary">
-	<nav class="navbar bg-dark">
-		<a class="navbar-brand" href="getBoardList.do"><img src="resources/images/ch2.PNG" height="50" width="50" alt="main"></a>
+<body>
+	<nav class="navbar bg-secondary">
+		<a class="navbar-brand" href="getBoardList.do"><span style="color: silver;"><i class="fas fa-home fa-2x"></i></span></a>
 		<!-- 로그인 -->
 		<sec:authorize access="isAnonymous()">
-			<a href="loginPage.do" class="btn btn-info">로그인 페이지</a>
+			<a href="loginPage.do" class="btn btn-dark">로그인</a>
+			<a href="insertUser.jsp" class="btn btn-dark">계정 생성</a>
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
-			${username }님 로그인
+			<h6 style="color: white;">${username }님 로그인</h6>
 			<form action="logout" method="post">
 				<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName }"/>
-				<button class="btn" type="submit">로그아웃</button>
+				<button class="btn btn-dark" type="submit">로그아웃</button>
 			</form>
 		</sec:authorize>
 	</nav>

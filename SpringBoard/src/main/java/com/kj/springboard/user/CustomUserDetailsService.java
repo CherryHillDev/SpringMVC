@@ -27,8 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			userDetails.setUsername(user.getUsername());
 			userDetails.setPassword("{noop}"+user.getPassword());
 			userDetails.setAuthorities(user.getAuthority());	//권한은 여러 개일 수 있어서 List..일단은 하나씩
-			
-			
+			System.out.println("userAuthority : " + user.getAuthority());
 		}
 		
 		return userDetails;

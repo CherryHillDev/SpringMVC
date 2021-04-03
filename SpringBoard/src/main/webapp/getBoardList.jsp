@@ -4,27 +4,31 @@
 <%@ include file="common/header.jsp" %>
 
 <!-- 검색 -->
-	<form action="getBoardList.do" class="form-inline my-2" method="get">	
-		<div class="row">
-			<select class="form-control mr-1" name="condition">
-				<option value="title">제목</option><option value="content">내용</option>
-			</select>
-			<input class="form-control mr-1" type="text" placeholder="검색" name="keyword"/>
-			<button class="btn" type="submit"><i class="fas fa-search"></i></button>
-			
-		</div>
-	</form>
+
 
 	
 <!-- 게시글 -->
 	<div class="container py-5">
+		<div class="d-flex justify-content-end">
+			<form action="getBoardList.do" class="form-inline my-2" method="get">	
+				<div class="row">
+					<select class="form-control mr-1" name="condition">
+						<option value="title">제목</option><option value="content">내용</option>
+					</select>
+					<input class="form-control" type="text" placeholder="검색" name="keyword"/>
+					<button class="btn" type="submit"><i class="fas fa-search"></i></button>
+					
+				</div>
+			</form>
+		</div>
+			
 		<sec:authorize access="isAuthenticated()">
 			<a href="insertBoard.jsp">글쓰기</a>
 		</sec:authorize>
 		
 		<table class="table table-hover">
 			<thead class="thead-dark">
-				<tr><th>#</th><th>제목</th><th>게시자</th><th>게시일</th></tr>
+				<tr><th style="width:10%">#</th><th style="width:50%">제목</th><th style="width:20%">게시자</th><th style="width:20%">게시일</th></tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${boardList }" var="board">
