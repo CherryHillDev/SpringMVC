@@ -42,32 +42,12 @@ public class BoardController {
 		return "getBoardList.do";
 	}
 	
-/*	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model, Authentication auth) {
-		if(vo.getKeyword()==null) {
-			vo.setKeyword("");
-		}
-		if(vo.getCondition()==null) {
-			vo.setCondition("title");
-		}
-		
-		if(auth!=null) {
-			model.addAttribute("username", auth.getName());
-		}
-		
-		
-		model.addAttribute("boardList", boardService.getBoardList(vo));
-		return "getBoardList.jsp";
-	}
- */
-	
 	@RequestMapping(value="/getBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getBoardList(@ModelAttribute("criteria") Criteria criteria, Model model, Authentication auth) throws Exception {
 		if(auth!=null) {
 			model.addAttribute("username", auth.getName());
 		}
 		
-		System.out.println("condition, keyword : "+criteria.getCondition()+", "+criteria.getKeyword());
 		model.addAttribute("boardList", boardService.getBoardList(criteria));	//초기값은 1페이지
 		
 		Paging paging = new Paging();
@@ -95,20 +75,23 @@ public class BoardController {
 	
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
+		boardService.updateBoardCount(vo);
+		
 		model.addAttribute("board", boardService.getBoard(vo));
 		
 		CommentVO c = new CommentVO();
 		c.setBoard_id(vo.getId());
+		
 		model.addAttribute("comments", commentService.getCommentList(c));
 
-		return "getBoard.jsp";
+		return "/WEB-INF/getBoard.jsp";
 	}
 	
 	@RequestMapping("/getUpdateBoard.do")
 	public String getUpdateBoard(BoardVO vo, Model model) {
 		model.addAttribute("board", boardService.getBoard(vo));
 		
-		return "getUpdateBoard.jsp";
+		return "/WEB-INF/getUpdateBoard.jsp";
 	}
 	
 	@RequestMapping("/updateBoard.do")

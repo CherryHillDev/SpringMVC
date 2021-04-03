@@ -28,4 +28,24 @@ public class UserDAO {
 		System.out.println("===> getUser()");
 		return mybatis.selectOne("userMapping.getUser", vo);
 	}
+	
+	
+	public void insertUserBoard(UserBoardVO vo) {
+		System.out.println("===> insertUserBoard()");
+		mybatis.insert("userMapping.insertUserBoard", vo);
+	}
+	
+	public void deleteUserBoard(UserBoardVO vo) {
+		System.out.println("===> deleteUserBoard()");
+		mybatis.delete("userMapping.deleteUserBoard", vo);
+	}
+	
+	public UserBoardVO getUserBoard(UserBoardVO vo) {
+		System.out.println("===> getUserBoard()");
+		return mybatis.selectOne("userMapping.getUserBoard", vo);
+	}
+	
+	public int getUserBoardCount(UserBoardVO vo) {
+		return mybatis.selectOne("userMapping.getUserBoardCount", vo);
+	}
 }

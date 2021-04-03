@@ -7,21 +7,25 @@
 	<update id="updateBoard">
 		UPDATE board SET title=#{title}, writer=#{writer}, content=#{content} WHERE id=#{id}
 	</update>
+	
+	<update id="updateBoardCount">
+		UPDATE board SET count=count+1 WHERE id=#{id}
+	</update>
+	
+	<update id="updateBoardLove">
+		UPDATE board SET love=love+1 WHERE id=#{id}
+	</update>
+	
 	<delete id="deleteBoard">
 		DELETE FROM board WHERE id=#{id}
 	</delete>
+	
 	<select id="getBoard" resultType="com.kj.springboard.board.BoardVO">
 		SELECT * FROM board WHERE id=#{id}
 	</select>
-<!-- 	<select id="getBoardList" resultType="com.kj.springboard.board.BoardVO">
-		SELECT * FROM board WHERE
-		<if test="condition=='title'"> title </if>
-		<if test="condition=='content'"> content </if>
-		LIKE concat('%',#{keyword},'%') ORDER BY id DESC 
-	</select> -->
-	
 	<select id="getBoardList" resultType="com.kj.springboard.board.BoardVO">
-		SELECT * FROM board WHERE
+		SELECT b.id, title, writer, content, count, created_time, (SELECT count(*) FROM comment WHERE board_id=b.id) AS comment_count, (SELECT count(*) FROM user_board WHERE board_id=b.id) AS love_count 
+		FROM board b WHERE
 		<if test="condition=='title'">
 			title
 		</if>
@@ -41,4 +45,5 @@
 		</if> 
 		LIKE concat('%',#{keyword},'%')
 	</select>
+	
 </mapper>

@@ -28,13 +28,21 @@
 		
 		<table class="table table-hover">
 			<thead class="thead-dark">
-				<tr><th style="width:10%">#</th><th style="width:50%">제목</th><th style="width:20%">게시자</th><th style="width:20%">게시일</th></tr>
+				<tr><th>#</th><th style="width:50%">제목</th><th>게시자</th><th>게시일</th><th>조회수</th><th>추천</th></tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${boardList }" var="board">
-					<tr><th>${board.id }</th>
-					<th><a href="getBoard.do?id=${board.id }">${board.title }</a></th>
-					<th>${board.writer }</th><th>${board.created_time }</th></tr>
+					<tr>
+						<th>${board.id }</th>
+						<th>
+							<a href="getBoard.do?id=${board.id }">${board.title }
+							<c:if test="${board.comment_count ne 0 }">
+								[${board.comment_count }]
+							</c:if></a>
+						</th>
+						<th>${board.writer }</th><th>${board.created_time }</th>
+						<th>${board.count }</th><th>${board.love_count }</th>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>

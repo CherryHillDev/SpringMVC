@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="common/header.jsp" %>
+<%@ include file="/common/header.jsp" %>
 
 <form action="insertBoard.do" method="post">
 	<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName }"/>
@@ -26,4 +26,4 @@
 <script>
 	CKEDITOR.replace('editor');
 </script>
-<%@ include file="common/footer.jsp" %>
+<%@ include file="/common/footer.jsp" %>

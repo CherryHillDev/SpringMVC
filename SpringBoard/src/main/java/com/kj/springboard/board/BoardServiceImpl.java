@@ -22,7 +22,16 @@ public class BoardServiceImpl implements BoardService {
 	public void updateBoard(BoardVO vo) {
 		boardDAO.updateBoard(vo);
 	}
-
+	
+	@Override
+	public void updateBoardCount(BoardVO vo) {
+		boardDAO.updateBoardCount(vo);
+	}
+	
+	public void updateBoardLove(BoardVO vo) {
+		boardDAO.updateBoardLove(vo);
+	}
+	
 	@Override
 	public void deleteBoard(BoardVO vo) {
 		boardDAO.deleteBoard(vo);		

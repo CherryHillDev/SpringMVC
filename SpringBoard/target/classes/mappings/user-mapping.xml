@@ -16,4 +16,22 @@
 	<select id="getUser" resultType="com.kj.springboard.user.UserVO">
 		SELECT * FROM user WHERE username=#{username}
 	</select>
+	
+	
+	<!-- user_board -->
+	<insert id="insertUserBoard">
+		INSERT INTO user_board(username, board_id) VALUES(#{username}, #{board_id})
+	</insert>
+	
+	<delete id="deleteUserBoard">
+		DELETE FROM user WHERE username=#{username} and board_id=#{board_id}
+	</delete>
+	
+	<select id="getUserBoard" resultType="com.kj.springboard.user.UserBoardVO">
+		SELECT * FROM user_board WHERE username=#{username} and board_id=#{board_id}
+	</select>
+	
+	<select id="getUserBoardCount">
+		SELECT count(*) FROM user_board WHERE board_id=#{board_id}
+	</select>
 </mapper>

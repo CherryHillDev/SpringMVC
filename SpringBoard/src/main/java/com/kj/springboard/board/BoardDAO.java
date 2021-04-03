@@ -23,6 +23,16 @@ public class BoardDAO {
 		mybatis.update("boardMapping.updateBoard", vo);
 	}
 	
+	public void updateBoardCount(BoardVO vo) {
+		System.out.println("===> updateBoardCount()");
+		mybatis.update("boardMapping.updateBoardCount", vo);
+	}
+	
+	public void updateBoardLove(BoardVO vo) {
+		System.out.println("===> updateBoardLove()");
+		mybatis.update("boardMapping.updateBoardLove", "vo");
+	}
+	
 	public void deleteBoard(BoardVO vo) {
 		System.out.println("===> deleteBoard() ");
 		mybatis.delete("boardMapping.deleteBoard", vo);
