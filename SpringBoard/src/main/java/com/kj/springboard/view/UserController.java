@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kj.springboard.user.UserBoardVO;
 import com.kj.springboard.user.UserService;
 import com.kj.springboard.user.UserVO;
 
@@ -77,19 +76,5 @@ public class UserController {
 		return Integer.toString(num);
 	}
 	
-	@RequestMapping(value="/checkUserBoard.do", method=RequestMethod.GET)
-	@ResponseBody
-	public String checkUserBoard(String username, int board_id) {
-		UserBoardVO vo = new UserBoardVO();
-		vo.setUsername(username);
-		vo.setBoard_id(board_id);
-		
-		if(userService.getUserBoard(vo)!=null) {	//이미 목록에 있으면
-			userService.deleteUserBoard(vo);
-			return "exist";
-		}else {
-			userService.insertUserBoard(vo);
-			return "";
-		}
-	}
+
 }

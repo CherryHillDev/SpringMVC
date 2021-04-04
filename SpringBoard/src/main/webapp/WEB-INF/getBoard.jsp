@@ -24,13 +24,7 @@
 			
 		</tbody>
 	</table>
-	
-	<!-- 추천 -->
-	<div style="text-align: center; font-size: small">
-		<sec:authorize access="isAuthenticated()">
-			<a onclick="love('${username }', ${board.id })"><i class="fas fa-heart fa-2x" style="color: silver;" id="love"></i></a>
-		</sec:authorize>${board.love_count }
-	</div>
+
 	
 	<table class="table my-3">
 		<c:if test="${!empty comments }">
@@ -127,22 +121,7 @@
 		}
 	}
 	
-	function love(username, id) {
-		$.ajax({
-			type:'GET',
-			url:'checkUserBoard.do?username='+username+'&board_id='+id,
-			dataType:'text'
-			
-		}).done(function(data){
-			if(data=='exist'){
-				$('#love').css('color', 'gray');
-			}else{
-				$('#love').css('color', 'pink');
-			}
-		})
-		
-		
-	}
+
 </script>
 <script src="https://kit.fontawesome.com/1ff4c7c7ae.js" crossorigin="anonymous"></script>
 </body>

@@ -28,24 +28,5 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getUser(vo);
 	}
 
-	
-	@Override
-	public void insertUserBoard(UserBoardVO vo) {
-		userDAO.insertUserBoard(vo);	
-	}
-	
-	@Override
-	public void deleteUserBoard(UserBoardVO vo) {
-		userDAO.deleteUserBoard(vo);
-	}
-	
-	@Override
-	public UserBoardVO getUserBoard(UserBoardVO vo) {
-		return userDAO.getUserBoard(vo);
-	}
-	
-	@Override
-	public int getUserBoardCount(UserBoardVO vo) {
-		return userDAO.getUserBoardCount(vo);
-	}
+
 }

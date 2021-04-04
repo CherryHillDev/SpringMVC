@@ -21,5 +21,4 @@ public class BoardVO extends TimeVO {
 	private String keyword;
 	
 	private int comment_count;
-	private int love_count;
 }

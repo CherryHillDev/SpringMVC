@@ -24,7 +24,7 @@
 		SELECT * FROM board WHERE id=#{id}
 	</select>
 	<select id="getBoardList" resultType="com.kj.springboard.board.BoardVO">
-		SELECT b.id, title, writer, content, count, created_time, (SELECT count(*) FROM comment WHERE board_id=b.id) AS comment_count, (SELECT count(*) FROM user_board WHERE board_id=b.id) AS love_count 
+		SELECT b.id, title, writer, content, count, created_time, (SELECT count(*) FROM comment WHERE board_id=b.id) AS comment_count 
 		FROM board b WHERE
 		<if test="condition=='title'">
 			title

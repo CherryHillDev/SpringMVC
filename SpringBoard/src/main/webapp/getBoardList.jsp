@@ -28,7 +28,7 @@
 		
 		<table class="table table-hover">
 			<thead class="thead-dark">
-				<tr><th>#</th><th style="width:50%">제목</th><th>게시자</th><th>게시일</th><th>조회수</th><th>추천</th></tr>
+				<tr><th>#</th><th style="width:50%">제목</th><th>게시자</th><th>게시일</th><th>조회수</th></tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${boardList }" var="board">
@@ -41,7 +41,7 @@
 							</c:if></a>
 						</th>
 						<th>${board.writer }</th><th>${board.created_time }</th>
-						<th>${board.count }</th><th>${board.love_count }</th>
+						<th>${board.count }</th>
 					</tr>
 				</c:forEach>
 			</tbody>
