@@ -27,6 +27,11 @@ public class BoardController {
 	@Autowired
 	private CommentService commentService;
 	
+	@RequestMapping("/insertBoardForm.do")
+	public String insertBoardForm() {
+		return "/WEB-INF/insertBoard.jsp";
+	}
+	
 	@RequestMapping(value="/insertBoard.do", method=RequestMethod.POST)
 	public String insertBoard(BoardVO vo) {
 		System.out.println("insert : "+vo.getContent()+", "+vo.getTitle());
@@ -42,7 +47,7 @@ public class BoardController {
 		return "getBoardList.do";
 	}
 	
-	@RequestMapping(value="/getBoardList.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value={"/getBoardList.do","/"})
 	public String getBoardList(@ModelAttribute("criteria") Criteria criteria, Model model, Authentication auth) throws Exception {
 		if(auth!=null) {
 			model.addAttribute("username", auth.getName());

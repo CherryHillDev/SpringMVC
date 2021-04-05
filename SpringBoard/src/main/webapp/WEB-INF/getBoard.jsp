@@ -120,8 +120,6 @@
 			$('#reviseForm'+index).prop('hidden', true);
 		}
 	}
-	
-
 </script>
 <script src="https://kit.fontawesome.com/1ff4c7c7ae.js" crossorigin="anonymous"></script>
 </body>

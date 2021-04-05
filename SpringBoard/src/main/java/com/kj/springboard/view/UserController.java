@@ -24,9 +24,16 @@ public class UserController {
 	@Autowired
 	JavaMailSenderImpl mailSender;
 	
+	
+	
 	@RequestMapping("/loginPage.do")
 	public String loginPage() {
 		return "/WEB-INF/login.jsp";
+	}
+	
+	@RequestMapping("/insertUserForm.do")
+	public String insertUserForm() {
+		return "/WEB-INF/insertUser.jsp";
 	}
 	
 	@RequestMapping(value="/insertUser.do", method=RequestMethod.POST)
@@ -36,6 +43,7 @@ public class UserController {
 		
 		return "/loginPage.do";
 	}
+	
 	
 	@RequestMapping(value="/checkUsername.do", method=RequestMethod.GET)
 	@ResponseBody
@@ -55,7 +63,7 @@ public class UserController {
 	public String checkMail(String email) {
 		
 		Random random = new Random();
-		int num = random.nextInt(999999)+100000;
+		int num = random.nextInt(900000)+99999;
 		
 		System.out.println("email : "+email+", "+num);
 		

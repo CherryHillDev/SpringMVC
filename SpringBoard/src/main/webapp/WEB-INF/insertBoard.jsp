@@ -4,7 +4,7 @@
 
 <form action="insertBoard.do" method="post">
 	<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName }"/>
-	<h3>새로운 글 쓰기</h3>
+	<h3>새로운 글쓰기</h3>
 	<div class="container">
 		<input type="hidden" value="${username }" name="writer">
 		<div class="form-group">
@@ -22,7 +22,7 @@
 </form>
 
 
-<script src="${pageContext.request.contextPath }/resources/ckeditor/ckeditor.js"></script>
+<script src="resources/ckeditor/ckeditor.js"></script>
 <script>
 	CKEDITOR.replace('editor');
 </script>

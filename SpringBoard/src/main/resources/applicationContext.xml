@@ -83,16 +83,24 @@
 		</s:authentication-provider>
 	</s:authentication-manager>
 	
+	<!-- 메일 전송 -->
+
+	
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com"/>
+		<property name="host" value="email-smtp.ap-northeast-2.amazonaws.com"/>
 		<property name="port" value="587"/>
-		<property name="username" value="wndus549@gmail.com"/>
-		<property name="password" value="ahsld!23"/>
+		<property name="username" value="AKIAQ6OM5OLLRZGTNMVD"/>
+		<property name="password" value="BJ08uYoC3NiAWJ2PXARz6e0rzhzNqWKWu+5aVXTIk3U0"/>
 		<property name="javaMailProperties">
 			<props>
-				<prop key="mail.transport.protocol">smtp</prop>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
+				 <prop key="spring.mail.properties.mail.transport.protocol">smtp</prop>
+				<!-- <prop key="mail.smtp.ssl.enable">true</prop> -->
+				<!-- <prop key="spring.mail.properties.mail.smtp.auth">false</prop> -->
+				 <!-- <prop key="spring.mail.properties.mail.smtp.ssl.trust">*</prop> -->
+				<prop key="spring.mail.properties.mail.debug">true</prop>
+				<!-- <prop key="mail.smtp.starttls.enable">true</prop> -->
+				 <!-- <prop key="mail.smtps.ssl.trust">*</prop> -->
+				<!--<prop key="mail.smtps.ssl.checkserveridentity">true</prop> -->
 			</props>
 		</property>
 	</bean>

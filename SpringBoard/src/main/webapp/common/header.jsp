@@ -11,11 +11,11 @@
 </head>
 <body>
 	<nav class="navbar bg-secondary">
-		<a class="navbar-brand" href="getBoardList.do"><span style="color: silver;"><i class="fas fa-home fa-2x"></i></span></a>
+		<a class="navbar-brand" href="/springboard/"><span style="color: silver;"><i class="fas fa-home fa-2x"></i></span></a>
 		<!-- 로그인 -->
 		<sec:authorize access="isAnonymous()">
 			<a href="loginPage.do" class="btn btn-dark">로그인</a>
-			<a href="insertUser.jsp" class="btn btn-dark">계정 생성</a>
+			<a href="insertUserForm.do" class="btn btn-dark">계정 생성</a>
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<h6 style="color: white;">${username }님 로그인</h6>

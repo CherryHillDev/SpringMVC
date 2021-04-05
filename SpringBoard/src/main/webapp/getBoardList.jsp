@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="common/header.jsp" %>
-
-<!-- 검색 -->
-
-
-	
 <!-- 게시글 -->
 	<div class="container py-5">
 		<div class="d-flex justify-content-end">
@@ -23,7 +18,7 @@
 		</div>
 			
 		<sec:authorize access="isAuthenticated()">
-			<a href="insertBoard.jsp">글쓰기</a>
+			<a href="insertBoardForm.do">글쓰기</a>
 		</sec:authorize>
 		
 		<table class="table table-hover">
