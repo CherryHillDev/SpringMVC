@@ -12,10 +12,6 @@
 		UPDATE board SET count=count+1 WHERE id=#{id}
 	</update>
 	
-	<update id="updateBoardLove">
-		UPDATE board SET love=love+1 WHERE id=#{id}
-	</update>
-	
 	<delete id="deleteBoard">
 		DELETE FROM board WHERE id=#{id}
 	</delete>
@@ -23,6 +19,7 @@
 	<select id="getBoard" resultType="com.kj.springboard.board.BoardVO">
 		SELECT * FROM board WHERE id=#{id}
 	</select>
+	
 	<select id="getBoardList" resultType="com.kj.springboard.board.BoardVO">
 		SELECT b.id, title, writer, content, count, created_time, (SELECT count(*) FROM comment WHERE board_id=b.id) AS comment_count 
 		FROM board b WHERE

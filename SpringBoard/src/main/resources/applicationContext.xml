@@ -52,9 +52,6 @@
 	<s:http pattern="/resources/**" security="none"/>
 	
 	<s:http auto-config="true" use-expressions="true">
-		<!-- <s:intercept-url pattern="/getBoardList.do" access="permitAll"/> -->
-		<s:intercept-url pattern="/insertUser*" access="permitAll"/>
-		
 		<s:intercept-url pattern="/update*" access="isAuthenticated()"/>
 		<s:intercept-url pattern="/delete*" access="isAuthenticated()"/>
 		<s:intercept-url pattern="/insert*" access="isAuthenticated()"/>
@@ -63,7 +60,7 @@
 		
 		<s:form-login login-page="/loginPage.do"
 					  default-target-url="/getBoardList.do"
-					  authentication-failure-url="/getBoardList.do"
+					  authentication-failure-url="/loginPage.do"
 					  />
 					  
 		<s:logout logout-url="/logout"
@@ -77,9 +74,6 @@
 
 	<s:authentication-manager>
 		<s:authentication-provider user-service-ref="loginService">
-			<!-- <s:user-service>
-				<s:user name="user" password="{noop}password" authorities="USER"/>
-			</s:user-service> -->
 		</s:authentication-provider>
 	</s:authentication-manager>
 	
@@ -94,13 +88,6 @@
 		<property name="javaMailProperties">
 			<props>
 				 <prop key="spring.mail.properties.mail.transport.protocol">smtp</prop>
-				<!-- <prop key="mail.smtp.ssl.enable">true</prop> -->
-				<!-- <prop key="spring.mail.properties.mail.smtp.auth">false</prop> -->
-				 <!-- <prop key="spring.mail.properties.mail.smtp.ssl.trust">*</prop> -->
-				<prop key="spring.mail.properties.mail.debug">true</prop>
-				<!-- <prop key="mail.smtp.starttls.enable">true</prop> -->
-				 <!-- <prop key="mail.smtps.ssl.trust">*</prop> -->
-				<!--<prop key="mail.smtps.ssl.checkserveridentity">true</prop> -->
 			</props>
 		</property>
 	</bean>

@@ -11,7 +11,7 @@ public class TimeVO {
 	private LocalDateTime created_time;
 	private LocalDateTime modified_time;
 	
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD HH:mm");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm");
 	
 	public String getCreated_time() {
 		return created_time.format(formatter);
