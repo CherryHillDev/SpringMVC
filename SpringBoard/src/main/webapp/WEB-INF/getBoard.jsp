@@ -5,10 +5,10 @@
 <div class="container my-5">
 	<c:if test="${username == board.writer}">
 		<div class="row justify-content-end">		
-			<a class="btn btn-link btn-sm" href="getUpdateBoard.do?id=${board.id }">수정</a><a class="btn btn-danger btn-sm" href="deleteBoard.do?id=${board.id }">삭제</a>
+			<a class="btn btn-link btn-sm" href="getUpdateBoard.do?id=${board.id }">수정</a>
+			<a class="btn btn-danger btn-sm" href="deleteBoard.do?id=${board.id }">삭제</a>
 		</div>	
-	</c:if>
-	
+	</c:if>	
 	
 	<table class="table my-3">
 		<thead>
@@ -49,6 +49,7 @@
 								<form action="deleteComment.do">
 									<input type="hidden" name="board_id" value="${board.id }">
 									<input type="hidden" name="id" value="${comment.id }">
+									<input type="hidden" name="writer" value="${username }">
 									<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName }"/>
 									<button class="btn btn-danger btn-sm" type="submit">삭제</button>
 								</form>
@@ -77,6 +78,7 @@
 								<input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName }"/>
 								<input type="hidden" name="board_id" value="${board.id }">
 								<input type="hidden" name="id" value="${comment.id }">
+								<input type="hidden" name="writer" value="${username }">
 								<div class="row justify-content-center">
 									<textarea  style="width:80%" name="content">${comment.content }</textarea>
 									<input type="submit" class="btn btn-info" value="완료">

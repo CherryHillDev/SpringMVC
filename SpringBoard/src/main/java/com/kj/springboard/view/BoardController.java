@@ -33,18 +33,26 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/insertBoard.do", method=RequestMethod.POST)
-	public String insertBoard(BoardVO vo) {
-		System.out.println("insert : "+vo.getContent()+", "+vo.getTitle());
-		boardService.insertBoard(vo);
-		
-		return "getBoardList.do";
+	public String insertBoard(BoardVO vo, Authentication auth) {
+		if(auth!=null) {
+			if(auth.getName().equals(vo.getWriter())){
+				boardService.insertBoard(vo);
+				return "getBoardList.do";
+			}
+		}
+		return "/WEB-INF/error.jsp";
 	}
 	
 	@RequestMapping("/deleteBoard.do")
-	public String deleteBoard(BoardVO vo) {
-		boardService.deleteBoard(vo);
-		
-		return "getBoardList.do";
+	public String deleteBoard(BoardVO vo, Authentication auth) {
+		BoardVO board = boardService.getBoard(vo);	//글번호로 전체 정보를 가져옴
+		if(auth!=null) {
+			if(auth.getName().equals(board.getWriter())){	// 세션의 유저네임이 삭제하려는 게시글의 글쓴이와 같으면
+				boardService.deleteBoard(vo);
+				return "getBoardList.do";
+			}
+		}
+		return "/WEB-INF/error.jsp";
 	}
 	
 	@RequestMapping(value={"/getBoardList.do","/"})
@@ -93,17 +101,20 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/getUpdateBoard.do")
-	public String getUpdateBoard(BoardVO vo, Model model) {
-		model.addAttribute("board", boardService.getBoard(vo));
-		
-		return "/WEB-INF/getUpdateBoard.jsp";
+	public String getUpdateBoard(BoardVO vo, Model model, Authentication auth) {
+			model.addAttribute("board", boardService.getBoard(vo));
+			return "/WEB-INF/getUpdateBoard.jsp";
 	}
 	
 	@RequestMapping("/updateBoard.do")
-	public String updateBoard(BoardVO vo, Model model) {
-		boardService.updateBoard(vo);
-		model.addAttribute("board", boardService.getBoard(vo));
-		
-		return "getBoard.do?id="+vo.getId();
+	public String updateBoard(BoardVO vo, Model model, Authentication auth) {
+		if(auth!=null) {
+			if(auth.getName().equals(vo.getWriter())) {// 세션의 유저네임이 수정하려는 게시글의 글쓴이와 같으면
+				boardService.updateBoard(vo);
+				model.addAttribute("board", boardService.getBoard(vo));
+				return "getBoard.do?id="+vo.getId();
+			}
+		}
+		return "/WEB-INF/error.jsp";
 	}
 }

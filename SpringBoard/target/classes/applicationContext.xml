@@ -60,8 +60,7 @@
 		
 		<s:form-login login-page="/loginPage.do"
 					  default-target-url="/getBoardList.do"
-					  authentication-failure-url="/loginPage.do"
-					  />
+					  authentication-failure-url="/loginPage.do"/>
 					  
 		<s:logout logout-url="/logout"
 				  logout-success-url="/getBoardList.do"

@@ -13,7 +13,7 @@
 		</div>
 		<div class="form-group">
 			<label for="content">내용</label>
-			<textarea rows="" cols="" class="form-control" id="content" name="content">${board.content }</textarea>
+			<textarea id="editor" name="content">${board.content }</textarea>
 		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-secondary">수정 완료</button>
@@ -21,4 +21,8 @@
 	</div>
 </form>
 
+<script src="resources/ckeditor/ckeditor.js"></script>
+<script>
+	CKEDITOR.replace('editor');
+</script>
 <%@ include file="/common/footer.jsp" %>

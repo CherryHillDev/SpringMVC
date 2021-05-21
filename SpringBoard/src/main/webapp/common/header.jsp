@@ -15,7 +15,7 @@
 		<!-- 로그인 -->
 		<sec:authorize access="isAnonymous()">
 			<a href="loginPage.do" class="btn btn-dark">로그인</a>
-			<a href="insertUserForm.do" class="btn btn-dark">계정 생성</a>
+			<a href="signForm.do" class="btn btn-dark">계정 생성</a>
 		</sec:authorize>
 		<sec:authorize access="isAuthenticated()">
 			<h6 style="color: white;">${username }님 로그인</h6>

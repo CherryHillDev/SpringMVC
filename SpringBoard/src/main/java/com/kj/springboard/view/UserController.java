@@ -31,14 +31,13 @@ public class UserController {
 		return "/WEB-INF/login.jsp";
 	}
 	
-	@RequestMapping("/insertUserForm.do")
+	@RequestMapping("/signForm.do")
 	public String insertUserForm() {
-		return "/WEB-INF/insertUser.jsp";
+		return "/WEB-INF/signForm.jsp";
 	}
 	
-	@RequestMapping(value="/insertUser.do", method=RequestMethod.POST)
+	@RequestMapping(value="/sign.do", method=RequestMethod.POST)
 	public String insertUser(UserVO vo) {
-		System.out.println("insertUser...");
 		userService.insertUser(vo);
 		
 		return "/loginPage.do";
